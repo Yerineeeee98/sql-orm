@@ -12,21 +12,27 @@ ORDER BY year;
 SELECT * FROM movies_movie 
 ORDER BY year DESC;
 
+SELECT * FROM movies_user
+ORDER BY age;
+
 -- User.objects.filter(age=31) 31살만 찾기
 SELECT * FROM movies_user
 WHERE age = 31;
+
+SELECT COUNT(*) FROM movies_category
+WHERE name = 'romance';
 
 -- User.objects.filter(age__lt=20) less then = lt grater then = gt 
 SELECT * FROM movies_user
 WHERE age<20;
 
 -- 20대 검색 User.objects.filter(age__gte=20, age__lt=30) gte 크거나 같다 
-SELECT * FROM movies_user
+SELECT name, age FROM movies_user
 WHERE age >=20 AND age<30;
 
 
 -- Movie.objects.filter(Q(year__lt=2000)|Q(year__gt=2010))
-SELECT * FROM movies_movie
+SELECT title, year FROM movies_movie
 WHERE year < 2000 OR year > 2010;
 
 -- 가장 최근에 개봉한 영화보기 Movie.objects.aggregate(Max('year'))
